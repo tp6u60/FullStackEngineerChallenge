@@ -43,9 +43,6 @@ export default class StaffInfo extends Vue {
   private cancel() {
     this.$emit('logChange', false);
   }
-  private created() {
-    console.log(this.staffInfo);
-  }
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <v-dialog></v-dialog> for login -->
     <v-app style="width: 100%; height: 100%">
       <login v-if="!_staff.name"></login>
       <div v-else>
@@ -10,7 +9,9 @@
               <v-list-item>
                 {{ title }}
               </v-list-item>
-              <v-divider></v-divider>
+              <v-list-item class="caption">
+                {{ `you are in ${this._staff.type} page!` }}
+              </v-list-item>
               <v-list dense nav>
                 <v-list-item
                   v-for="item in sideNav"
@@ -76,7 +77,6 @@ import {State, Action, Getter, namespace} from 'vuex-class';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faUser, faUserPlus, faSignOutAlt, faAddressBook, faGlobeAmericas, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-
 import AddStaffInfo from '@/components/AddStaffInfo.vue';
 import Login from './Login.vue';
 import * as types from './typedef';
@@ -86,6 +86,9 @@ library.add(faUserPlus, faSignOutAlt, faAddressBook, faGlobeAmericas, faCheckCir
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('add-staff-info', AddStaffInfo);
 Vue.component('login', Login);
+
+// fixme: impliment save all changes function
+// fixme: impliment add staff function
 
 @Component
 export default class App extends Vue {
@@ -101,23 +104,20 @@ export default class App extends Vue {
   @Getter('allStaffs') private _allStaffs!: types.StaffResponse[];
   @Getter('reviews') private _reviews!: types.ReviewResponse;
   private selectedItem: string = '';
-  // private staff!: types.StaffResponse = {}
-  private sideNav: types.SideNav[] = [
-    {title: 'myself', icon: ['fas', 'user']}
-  ];
+  private sideNav: types.SideNav[] = [];
   private type: string = 'employee';
   private logStatus: boolean = false;
 
-  private right = null;
-
   private async logout() {
     this.$router.push('/');
+    this.selectedItem = '';
     await this._logout();
   }
 
   @Watch('_staff') private async onChanged() {
     if (this._staff.type === 'employee') {
       this.$router.push({name: 'EmployeeHome'});
+      this.sideNav = [{title: 'myself', icon: ['fas', 'user']}];
       await this._getReviewByName(this._staff.name);
       this._reviews.toReview.forEach((title: string) => this.sideNav.push({title, icon: ['fas', 'user']}));
     } else {
@@ -175,24 +175,18 @@ document.oncontextmenu = (e: any) => {
   width: 256px;
   height: 100% !important;
   position: fixed;
-  // border-radius: 0px !important;
 }
 
 .card {
-  // border-radius: 0px !important;
   height: 100%;
   width: 256px;
 }
 
 .container {
   margin-left: 256px;
-  // display: flex;
-  // flex-wrap: wrap;
   height: 100%;
   width: 100%;
   padding: 0px !important;
-  // overflow-y: auto !important;
-  // border-radius: 0px !important;
 }
 
 .toolbar {

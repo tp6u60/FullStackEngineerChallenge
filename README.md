@@ -36,29 +36,40 @@ server is on port 5000
 
 
 ### All the Assumptions
-- mock users (`mock_`): mock1 ~ mock8
+- mock users (`mock_`): mock1 ~ mock4
 - accont will be `mock_@paypay.com`
 - password will be `mock_`
 
 ### Already impliment
 
+- It can run
+  - Change Language
+  - Login / Logout
+  - Modify Reviews in employee page
+  - Save changes in employee page
 - UI
   - login page
   - admin page
   - employee page
   - add employee dialog
+  - modify employee dialog
   - modify reviews dialog
 - API
   - GET all staff
   - GET staff by name
   - GET reviews by name
   - UPDATE reviews by name
-- It can run
-  - Change Language
-  - Login / Logout
-  - Modify Reviews in employee page
-  - Save changes in employee page
 
+
+### Developed With
+ - VueJS
+ - Typescript
+ - vuex
+ - vuetify
+ - express
+ - font-awesome
+ - i18n
+ - sql.js
 
 
 ## Requirements
@@ -102,7 +113,3 @@ _Partial solutions are acceptable._ It is not necessary to submit a complete sol
 - Assumptions you make given limited requirements
 - Technology and design choices
 - Identify areas of your strengths
-
-```
-
-```

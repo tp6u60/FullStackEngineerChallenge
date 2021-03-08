@@ -10,8 +10,7 @@
           :items="['employee', 'administrator']"
           label="type"
         ></v-autocomplete>
-        <!-- 每個人對此員工的評價 -->
-        <!-- list -->
+        <!-- fixme: list every reviews -->
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn outlined @click="cancel" color="black">Cancel</v-btn>

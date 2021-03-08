@@ -24,8 +24,6 @@ export default new Vuex.Store({
       try {
         const {commit} = helper;
         const api: AxiosInstance = axios.create({baseURL: `http://${window.location.hostname}:5000`});
-        // const response: AxiosResponse = await api.get('/staffs');
-        // console.log(response);
         commit('commit_api', api);
       } catch (err) {
         console.error(`initAPI fail, ${err.massage}`);
@@ -67,7 +65,6 @@ export default new Vuex.Store({
         if (response.status !== 200) return;
         else {
           const data: types.StaffResponse = response.data;
-          console.log(data);
           commit('commit_review', data);
         }
       } catch (err) {
@@ -86,9 +83,7 @@ export default new Vuex.Store({
         if (response.status !== 200) return;
         else {
           const data: types.StaffResponse = response.data;
-          console.log(data);
           await dispatch('getReviewByName', input.name);
-          // commit('commit_review', data);
         }
       } catch (err) {
         console.error(`updateReviewByName fail, ${err.massage}`);

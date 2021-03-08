@@ -10,6 +10,7 @@
         :key="index"
       >
         <v-flex class="card-name" subtitle-1>
+          <!-- fixme: list score-->
           {{ name }}: {{ obj.name }},
           {{ `email: ${obj.email}` }}
         </v-flex>
@@ -62,6 +63,8 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('reviews-info', ReviewsInfo);
 Vue.component('modify-info', ModifyInfo);
 
+// fixme: implimnt modify staff & review function
+
 @Component
 export default class AdminHome extends Vue {
   @Prop() private selectedItem!: string;
@@ -100,6 +103,7 @@ export default class AdminHome extends Vue {
       }
     });
   }
+
 }
 </script>
 
@@ -110,7 +114,6 @@ export default class AdminHome extends Vue {
   height: 100%;
   width: 100%;
   border-radius: 0px !important;
-  // overflow-y: auto !important;
 }
 .employee-card {
   height: 70px;
@@ -119,7 +122,6 @@ export default class AdminHome extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border-radius: 0px !important;
 }
 .card-name {
   margin-left: 10px;
