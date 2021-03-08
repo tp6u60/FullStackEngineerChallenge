@@ -10,6 +10,7 @@
         :key="index"
       >
         <v-flex class="card-name" subtitle-1>
+          <!-- fixme: list score-->
           {{ name }}: {{ obj.name }},
           {{ `email: ${obj.email}` }}
         </v-flex>
@@ -61,6 +62,8 @@ library.add(faTimesCircle, faEdit, faUserEdit);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('reviews-info', ReviewsInfo);
 Vue.component('modify-info', ModifyInfo);
+
+// fixme: implimnt modify staff & review function
 
 @Component
 export default class AdminHome extends Vue {

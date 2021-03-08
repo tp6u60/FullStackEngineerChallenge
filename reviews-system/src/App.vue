@@ -77,7 +77,6 @@ import {State, Action, Getter, namespace} from 'vuex-class';
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faUser, faUserPlus, faSignOutAlt, faAddressBook, faGlobeAmericas, faCheckCircle} from '@fortawesome/free-solid-svg-icons';
-
 import AddStaffInfo from '@/components/AddStaffInfo.vue';
 import Login from './Login.vue';
 import * as types from './typedef';
@@ -87,6 +86,9 @@ library.add(faUserPlus, faSignOutAlt, faAddressBook, faGlobeAmericas, faCheckCir
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.component('add-staff-info', AddStaffInfo);
 Vue.component('login', Login);
+
+// fixme: impliment save all changes function
+// fixme: impliment add staff function
 
 @Component
 export default class App extends Vue {
@@ -105,8 +107,6 @@ export default class App extends Vue {
   private sideNav: types.SideNav[] = [];
   private type: string = 'employee';
   private logStatus: boolean = false;
-
-  private right = null;
 
   private async logout() {
     this.$router.push('/');
