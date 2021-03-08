@@ -5,14 +5,29 @@ This is an interview challengs. Please feel free to fork. Pull Requests will be 
 ## Update By CHEN, YI AN
 
 ### Quick Start
+Please download nodejs first: https://nodejs.org/en/download/
 
 ```
 # clone this respository
 
 $ git clone https://github.com/tp6u60/FullStackEngineerChallenge.git
 
-$ cd reviews-system
+$ cd FullStackEngineerChallenge/reviews-system
 $ bash quickstart.sh
+```
+or you can: 
+```
+#!/bin/bash
+
+# make sure you have nodejs & npm
+$ node -v
+$ npm -v
+
+# install yarn
+$ npm install --global yarn
+
+$ yarn install
+$ yarn start
 ```
 
 client is on port 8080 (http://localhost:8080)
