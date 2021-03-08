@@ -15,7 +15,7 @@
           chips
           multiple
           v-model="staffInfo.reviewers"
-          :items="['a', 'b']"
+          :items="allStaffNames"
           label="reviewers"
         ></v-autocomplete>
         <!-- </v-text-field> -->
@@ -44,6 +44,8 @@ import * as types from '../typedef';
 @Component
 export default class StaffInfo extends Vue {
   @Prop() private showLog!: boolean;
+  @Prop() private allStaffs!: types.StaffResponse[];
+  private allStaffNames: string[] = [];
   private staffInfo: types.StaffInfo = {
     name: '',
     email: '',
@@ -51,6 +53,11 @@ export default class StaffInfo extends Vue {
     reviewers: [],
     reviews: ''
   };
+  @Watch('allStaffs') private async onChanged() {
+    this.allStaffs.forEach((staff: types.StaffResponse) => {
+      this.allStaffNames.push(staff.name);
+    });
+  }
   private save() {
     this.$emit('showLog', false);
     // this.showLog = !this.showLog;

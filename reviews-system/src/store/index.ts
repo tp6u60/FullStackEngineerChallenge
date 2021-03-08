@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import i18n from '../i18n';
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import * as types from '../typedef';
 
@@ -93,6 +94,31 @@ export default new Vuex.Store({
         console.error(`updateReviewByName fail, ${err.massage}`);
       }
     },
+    logout: async (helper: any) => {
+      try {
+        const {state, commit} = helper;
+        commit('commit_staff', {});
+        commit('commit_allStaffs', []);
+      } catch (err) {
+        console.error(`logout fail, ${err.massage}`);
+      }
+    },
+    setLang: async (helper: any, lang: any) => {
+      const {commit} = helper;
+      return new Promise<void>(async (resolve, reject) => {
+        if (lang in i18n.messages) {
+          localStorage.setItem('lang', lang);
+          commit('set_lang', lang);
+          resolve();
+        } else {
+          const payload = await require(`@/locale/${lang}.json`);
+          i18n.setLocaleMessage(lang, payload);
+          localStorage.setItem('lang', lang);
+          commit('set_lang', lang);
+          resolve();
+        }
+      });
+    },
   },
   mutations: {
     commit_api(state: any, api: any) {
@@ -106,6 +132,9 @@ export default new Vuex.Store({
     },
     commit_allStaffs(state: any, allStaffs: types.ReviewResponse[]) {
       Vue.set(state, 'allStaffs', allStaffs);
+    },
+    set_lang(state: any, lang: any) {
+      i18n.locale = lang;
     },
   }
 });

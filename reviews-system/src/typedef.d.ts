@@ -24,7 +24,6 @@ export interface LoginInput {
 }
 
 export interface StaffResponse {
-  id: number;
   name: string;
   email: string;
   team: string;
@@ -32,7 +31,6 @@ export interface StaffResponse {
 }
 
 export interface ReviewResponse {
-  id: number;
   name: string;
   reviews: ReviewDetail[];
   reviewers: string[];

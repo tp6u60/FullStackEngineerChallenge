@@ -30,6 +30,7 @@
         </div>
         <v-container class="container">
           <add-staff-info
+            :allStaffs="_allStaffs"
             :showLog="logStatus"
             @showLog="statusChange"
           ></add-staff-info>
@@ -50,14 +51,14 @@
               add
               <font-awesome-icon class="icon" :icon="['fas', 'user-plus']" />
             </v-btn>
-            <v-btn outlined
+            <v-btn outlined @click="langSwitch"
               >lan
               <font-awesome-icon
                 class="icon"
                 :icon="['fas', 'globe-americas']"
               />
             </v-btn>
-            <v-btn outlined
+            <v-btn outlined @click="logout"
               >logout
               <font-awesome-icon class="icon" :icon="['fas', 'sign-out-alt']" />
             </v-btn>
@@ -94,6 +95,8 @@ export default class App extends Vue {
   @Action('initAPI') private _inintAPI!: () => Promise<void>;
   @Action('getReviewByName') private _getReviewByName!: (name: string) => Promise<void>;
   @Action('getAllStaff') private _getAllStaff!: () => Promise<void>;
+  @Action('logout') private _logout!: () => Promise<void>;
+  @Action('setLang') private _setLang!: (lang: string) => Promise<void>;
   @Getter('staff') private _staff!: types.StaffResponse;
   @Getter('allStaffs') private _allStaffs!: types.StaffResponse[];
   @Getter('reviews') private _reviews!: types.ReviewResponse;
@@ -106,6 +109,12 @@ export default class App extends Vue {
   private logStatus: boolean = false;
 
   private right = null;
+
+  private async logout() {
+    this.$router.push('/');
+    await this._logout();
+  }
+
   @Watch('_staff') private async onChanged() {
     if (this._staff.type === 'employee') {
       this.$router.push({name: 'EmployeeHome'});
@@ -129,6 +138,20 @@ export default class App extends Vue {
 
   private statusChange(status: boolean) {
     this.logStatus = status;
+  }
+
+  private langSwitch() {
+    const currentLang: string = localStorage.getItem('lang')!;
+    if (currentLang === 'en') this._setLang('ja');
+    else this._setLang('en');
+  }
+
+  private async created() {
+    const currentLang: string = localStorage.getItem('lang')!;
+    if (!currentLang) {
+      await this._setLang('en');
+      location.reload();
+    }
   }
 
 }

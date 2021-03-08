@@ -24,11 +24,10 @@ app.get('/staffs', (req, res) => {
   let output = [];
   staffs.forEach(staff => {
     output.push({
-      id: staff[0],
-      name: staff[1],
-      email: staff[2],
-      team: staff[4],
-      type: staff[5]
+      name: staff[0],
+      email: staff[1],
+      team: staff[3],
+      type: staff[4]
     });
   });
   res.send(output);
@@ -42,11 +41,10 @@ app.get('/staff', (req, res) => {
   `)
   const staff = result[0].values;
   const output = {
-    id: staff[0][0],
-    name: staff[0][1],
-    email: staff[0][2],
-    team: staff[0][4],
-    type: staff[0][5]
+    name: staff[0][0],
+    email: staff[0][1],
+    team: staff[0][3],
+    type: staff[0][4]
   }
   res.send(output);
 });
@@ -59,11 +57,10 @@ app.get('/review', (req, res) => {
   `);
   const review = result[0].values;
   const output = {
-    id: review[0][0],
-    name: review[0][1],
-    reviews: JSON.parse(review[0][2]),
-    reviewers: JSON.parse(review[0][3]),
-    toReview: JSON.parse(review[0][4])
+    name: review[0][0],
+    reviews: JSON.parse(review[0][1]),
+    reviewers: JSON.parse(review[0][2]),
+    toReview: JSON.parse(review[0][3])
   };
   console.log(output);
   res.send(output);
