@@ -44,7 +44,6 @@ export default class EmployeeHome extends Vue {
   @Action('updateReviewByName') private _updateReviewByName!: (input: types.UpdateReviewInput) => Promise<void>;
   @Prop() private selectedItem!: string;
   @Watch('selectedItem') private async titleChanged() {
-    console.log(this.selectedItem);
     const allReviews: types.ReviewDetail[] = this._reviews.reviews;
     const selectedReview: types.ReviewDetail[] = this.selectedItem === 'myself' ?
       allReviews.filter((r: types.ReviewDetail) => r.reviewer === this._staff.name) :
@@ -68,7 +67,6 @@ export default class EmployeeHome extends Vue {
   height: 100%;
   width: 100%;
   border-radius: 0px !important;
-  // overflow-y: auto !important;
 }
 .employee-card {
   height: 70px;
@@ -77,7 +75,6 @@ export default class EmployeeHome extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border-radius: 0px !important;
 }
 .card-text {
   padding: 0px;

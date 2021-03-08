@@ -100,6 +100,7 @@ export default class AdminHome extends Vue {
       }
     });
   }
+
 }
 </script>
 
@@ -110,7 +111,6 @@ export default class AdminHome extends Vue {
   height: 100%;
   width: 100%;
   border-radius: 0px !important;
-  // overflow-y: auto !important;
 }
 .employee-card {
   height: 70px;
@@ -119,7 +119,6 @@ export default class AdminHome extends Vue {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // border-radius: 0px !important;
 }
 .card-name {
   margin-left: 10px;

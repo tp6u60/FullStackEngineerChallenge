@@ -62,7 +62,6 @@ app.get('/review', (req, res) => {
     reviewers: JSON.parse(review[0][2]),
     toReview: JSON.parse(review[0][3])
   };
-  console.log(output);
   res.send(output);
 })
 
@@ -76,8 +75,5 @@ app.put('/review', async (req, res) => {
     WHERE name = '${name}'
   ;`;
   await db.run(sqlString);
-  res.send(db.exec(`SELECT * FROM tbl_all_reviews WHERE name = '${name}';`));
-  // res.send(req);
+  res.sendStatus(200);
 })
-
-// app.get()

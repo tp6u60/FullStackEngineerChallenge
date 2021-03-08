@@ -3,11 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev:api": "nodemon server/server.js",
-    "start": "concurrently \"npm run serve\" \"nodemon server/server.js\"",
-    "test:unit": "vue-cli-service test:unit"
+    "start": "concurrently \"npm run serve\" \"nodemon server/server.js\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.2",
@@ -16,9 +14,9 @@
     "@fortawesome/free-solid-svg-icons": "5.15.2",
     "@fortawesome/vue-fontawesome": "2.0.2",
     "@types/mathjs": "6.0.5",
-    "axios": "^0.19.2",
-    "concurrently": "^6.0.0",
-    "cors": "^2.8.5",
+    "axios": "0.19.2",
+    "concurrently": "6.0.0",
+    "cors": "2.8.5",
     "express": "4.17.1",
     "material-design-icons-iconfont": "5.0.1",
     "mathjs": "7.1.0",

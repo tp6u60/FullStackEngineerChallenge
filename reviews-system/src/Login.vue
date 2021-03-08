@@ -39,7 +39,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 export default class Login extends Vue {
   @Action('getStaffByName') private _getStaffByName!: (name: string) => Promise<void>;
   private loginInput: types.LoginInput = {
-    account: 'mock4@paypay.com', password: 'mock4'
+    account: '', password: ''
   };
   private error: boolean = false;
   private async login() {
@@ -63,6 +63,5 @@ export default class Login extends Vue {
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 1, 0.5);
-  // overflow-y: auto !important;
 }
 </style>
