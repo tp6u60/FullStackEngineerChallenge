@@ -35,18 +35,20 @@ client is on port 8080 (http://localhost:8080)
 server is on port 5000
 
 
-### All the Assumptions
-- mock users (`mock_`): mock1 ~ mock4
-- accont will be `mock_@paypay.com`
-- password will be `mock_`
+### All sssumptions & mock data
+- mock users (`mock{number}`): mock1 ~ mock4
+- accont will be `mock{number}@paypay.com`
+- password will be `mock{number}`
+- mock1 ~ mock3 are employees
+- mock4 is administrator
 
 ### Already impliment
 
 - It can run
   - Change Language
   - Login / Logout
-  - Modify Reviews in employee page
-  - Save changes in employee page
+  - Modify Reviews in `employee page`
+  - Save changes in `employee page`
 - UI
   - login page
   - admin page
